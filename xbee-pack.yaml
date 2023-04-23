@@ -1,7 +1,7 @@
 schema-version: 1.0
 
 
-in:
+var:
   version: 2.4.7
 
 dependencies:
