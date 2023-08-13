@@ -2,24 +2,25 @@ schema-version: 1.0
 
 type: builder
 
+var:
+  conf_file: /root/haproxy.conf
 
-dependencies:
+builders:
   - lua
   - pcre
-  - openssl
   - zlib
+dependencies:
+  - openssl
 
 provision:
   - url:
      from: http://www.haproxy.org/download/{{ majorVersion .version }}.{{ minorVersion .version }}/src/haproxy-{{ .version }}.tar.gz
-     todir: "{{ .xbeeSrc }}"
+     todir: "{{ .xbee.src }}"
 
 
 build:
   - shell:
       cmds:
         - make TARGET=linux-glibc USE_TFO=1 USE_OPENSSL=1 USE_ZLIB=1 USE_LUA=1 USE_PCRE=1
-        - make install PREFIX={{ .xbeeOut }}/usr
-      directory: "{{ .xbeeSrc }}/haproxy-{{ .version }}"
-
-  
+        - make install PREFIX={{ .xbee.out }}/usr
+      directory: "{{ .xbee.src }}/haproxy-{{ .version }}"
