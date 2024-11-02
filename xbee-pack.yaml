@@ -2,9 +2,10 @@ schema-version: 1.0
 
 
 var:
-  version: 2.4.7
+  xbee:
+    version: 2.4.7
 
-builders:
+builder:
   - pcre
   - ./builder
 
